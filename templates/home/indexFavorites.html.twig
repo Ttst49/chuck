@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+<h1>Coucou</h1>
+
+    {% for joke in jokes %}
+    {{ joke.content }} <br> <br>
+    {% endfor %}
+
+
+{% endblock %}

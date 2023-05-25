@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('app_home_showfavorites') }}">Voir mes blagues favoris</a>
+
+<h1>Coucou</h1>
+
+    {% for joke in jokes %}
+    {{ joke.value }} <a href="{{ path('app_home_savejoke',{value: joke.value}) }}"> sauvegarder cette blague</a><br> <br>
+    {% endfor %}
+
+    <a href="{{ path('app_home_httprequest') }}">Appeler des blagues sur CHUCK</a>
+
+
+{% endblock %}
