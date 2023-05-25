@@ -17,6 +17,10 @@ class Joke
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[ORM\ManyToOne(inversedBy: 'jokes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $ofUser = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -30,6 +34,18 @@ class Joke
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getOfUser(): ?User
+    {
+        return $this->ofUser;
+    }
+
+    public function setOfUser(?User $ofUser): self
+    {
+        $this->ofUser = $ofUser;
 
         return $this;
     }

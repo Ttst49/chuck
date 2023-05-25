@@ -4,15 +4,13 @@
 
 {% block body %}
 
-    <a href="{{ path('app_home_showfavorites') }}">Voir mes blagues favoris</a>
+    {% if jokes %}
+        {% for joke in jokes %}
+        {{ joke.value }} <a class="btn btn-outline-light" href="{{ path('app_home_savejoke',{value: joke.value}) }}"> sauvegarder cette blague</a><br> <br>
+        {% endfor %}
+    {% endif %}
 
-<h1>Coucou</h1>
-
-    {% for joke in jokes %}
-    {{ joke.value }} <a href="{{ path('app_home_savejoke',{value: joke.value}) }}"> sauvegarder cette blague</a><br> <br>
-    {% endfor %}
-
-    <a href="{{ path('app_home_httprequest') }}">Appeler des blagues sur CHUCK</a>
+    <a class="btn btn-info" href="{{ path('app_home_httprequest') }}">Appeler des blagues sur CHUCK</a>
 
 
 {% endblock %}

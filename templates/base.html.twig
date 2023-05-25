@@ -14,6 +14,39 @@
         {% endblock %}
     </head>
     <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('app_home_httprequest') }}">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('app_logout') }}">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_home_showfavorites') }}">My jokes</a>
+                        </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('app_login') }}">Login</a>
+                            </li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
         {% block body %}{% endblock %}
+    </div>
     </body>
 </html>

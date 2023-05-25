@@ -39,6 +39,7 @@ class HomeController extends AbstractController
 
         $joke = new Joke();
         $joke->setContent($value);
+        $joke->setOfUser($this->getUser());
 
         $manager->persist($joke);
         $manager->flush();
@@ -51,7 +52,7 @@ class HomeController extends AbstractController
 
 
         return $this->render("home/indexFavorites.html.twig",[
-            "jokes"=>$repository->findAll()
+            "jokes"=>$this->getUser()->getJokes()
         ]);
     }
 }
